@@ -1,0 +1,81 @@
+<!DOCTYPE html SYSTEM "http://www.thymeleaf.org/dtd/xhtml1-strict-thymeleaf-spring4-4.dtd">
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorator="layout">
+<head>
+    <title>Add Employee Page</title>
+</head>
+<body>
+<div layout:fragment="content">
+
+    <div class="row">
+        <div class="col-md-offset-3 col-md-6">
+
+            <!-- Save Messages -->
+            <div th:if="${saveEmployee eq 'Failed'}">
+                <div class="alert alert-danger alert-dismissible" role="alert">
+                    <strong>Error!</strong> Employee not saved.
+                </div>
+            </div>
+            <div th:if="${saveEmployee eq 'Success'}">
+                <div class="alert alert-success alert-dismissible" role="alert">
+                    <strong>Success!</strong> Employee saved successfully.
+                </div>
+            </div>
+
+            <!-- Deletion Messages -->
+            <div th:if="${deletion eq 'Failed'}">
+                <div class="alert alert-danger alert-dismissible" role="alert">
+                    <strong>Error!</strong> Employee not deleted.
+                </div>
+            </div>
+            <div th:if="${deletion eq 'Success'}">
+                <div class="alert alert-success alert-dismissible" role="alert">
+                    <strong>Success!</strong> Employee deleted successfully.
+                </div>
+            </div>
+
+            <!-- Edit Message -->
+            <div th:if="${status eq 'notfound'}">
+                <div class="alert alert-danger alert-dismissible" role="alert">
+                    <strong>Error!</strong> Invalid Employee.
+                </div>
+            </div>
+            <div th:if="${edit eq 'Failed'}">
+                <div class="alert alert-danger alert-dismissible" role="alert">
+                    <strong>Error!</strong> Employee not edited.
+                </div>
+            </div>
+            <div th:if="${edit eq 'Success'}">
+                <div class="alert alert-success alert-dismissible" role="alert">
+                    <strong>Success!</strong> Employee edited successfully.
+                </div>
+            </div>
+
+            <div class="panel panel-success">
+                <div class="panel-heading">
+                    <h3 class="panel-title">New Employee</h3>
+                </div>
+                <div class="panel-body">
+                    <form th:object="${employee}" th:action="@{/employee/save}" action="#" method="post">
+                        <input type="text" th:field="*{empName}" class="form-control"
+                               placeholder="Name" required/>
+                        <div style="clear:both; display:block;height:10px;"></div>
+                        <input type="text" th:field="*{empDesignation}" class="form-control"
+                               placeholder="Job" required/>
+                        <div style="clear:both; display:block;height:10px;"></div>
+                        <input type="text" th:field="*{empSalary}" class="form-control"
+                               placeholder="Salary (000.00)" required/>
+                        <div style="clear:both; display:block;height:10px;"></div>
+                        <input type="submit" class="btn btn-success pull-right" value="Save">
+                    </form>
+                </div>
+                <div class="panel-footer">
+                    <a th:href="@{/}" class="btn btn-info">Back To Main Page</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+</body>
+</html>
