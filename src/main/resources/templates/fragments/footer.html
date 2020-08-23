@@ -1,0 +1,16 @@
+<!DOCTYPE html SYSTEM "http://www.thymeleaf.org/dtd/xhtml1-strict-thymeleaf-spring4-4.dtd">
+<html>
+<head>
+    <title>Sample Thymeleaf App with Spring Boot</title>
+</head>
+<body>
+<nav class="navbar navbar-inverse navbar-fixed-bottom">
+    <div class="container">
+        <p class="navbar-text"><a href="https://github.com/ramazansakin">Ramazan Sakin</a> &copy;
+            <put-date th:text=${#dates.year(#dates.createNow())}></put-date>
+            | Sample Footer Content Here
+        </p>
+    </div>
+</nav>
+</body>
+</html>
